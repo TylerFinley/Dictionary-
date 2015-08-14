@@ -1,0 +1,11 @@
+<h1>Add new definiton:</h1>
+
+<form action="/dictionaries" method="post">
+  <label for="word_address">The new definiton:</label>
+  <input id='word_address' name='word_address' type='text'>
+
+  <input id='dictionary_id' name='dictionary_id' type='hidden' value='<%= @dictionary.dictionary_id() %>'>
+
+
+  <button type="submit">Add</button>
+</form>

@@ -1,51 +1,16 @@
-class Dictionary
-  attr_reader(:definition, :words)
-  @@dictionaries = []
 
+<h2>Here is the definition for <%= @dictionary.definition() %> </h2>
 
-  define_method(:initialize) do |attributes|
-    @definition = attributes.fetch(:definition)
-    @dictionary_id = @@dictionaries.length().+(1)
-    @words = []
+<div id="words">
+  <li>
+    Definition:
+    <ul> <% @dictionary.words().each() do |word_entry| %>
+      <li> <%= word_entry.word_address() %></li>
+      <% end %>
+    </ul>
+  </li>
+</div>
 
-  end
-
-  define_singleton_method(:all) do
-    @@dictionaries
-  end
-
-  define_method(:dictionary_id) do
-    @dictionary_id
-  end
-
-  define_method(:save) do
-    @@dictionaries.push(self)
-  end
-
-  define_method(:delete) do
-    @@dictionaries.delete(self)
-  end
-
-  define_singleton_method(:clear) do
-    @@dictionaries = []
-  end
-
-  define_method(:id) do
-    @dictionary_id
-  end
-
-  define_singleton_method(:find) do |identification|
-    found_dictionary = nil
-    @@dictionaries.each() do |dictionary|
-      if dictionary.id() == identification.to_i
-        found_dictionary = dictionary
-      end
-    end
-    found_dictionary
-  end
-
-  define_method(:add_word) do |word|
-    @words.push(word)
-  end
-
-end
+<a href="/dictionaries/<%= @dictionary.id() %>/word/new">Add definitions for word</a><br>
+<a href="/dictionaries/<%= @dictionary.id()%>/delete">Delete these dfinitions</a><br>
+<a href="/">Return to Main page</a>

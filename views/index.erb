@@ -1,0 +1,10 @@
+<h1>Dictionary</h1>
+
+<ul>
+  <% @dictionaries.each() do |dictionary| %>
+  <li><a href="/dictionaries/<%= dictionary.id() %>"><%= dictionary.definition() %> </a></li>
+  <% end %>
+</ul>
+
+<a href="/dictionaries/new">Add New Word</a><br>
+<a href="/clear">Clear All Words</a>
