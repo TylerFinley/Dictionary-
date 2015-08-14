@@ -1,0 +1,1 @@
+Application to assign definitions to words. 
